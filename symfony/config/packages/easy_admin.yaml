@@ -1,4 +1,11 @@
 easy_admin:
     entities:
         # List the entity class name you want to manage
-        - App\Entity\Article
+        Article:
+          class: App\Entity\Article
+        Dossier:
+          class: App\Entity\Dossier
+          form:
+            fields:
+              - 'name'
+              - { property: 'articles', type_options: { by_reference: false } }

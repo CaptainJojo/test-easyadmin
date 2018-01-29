@@ -22,6 +22,11 @@ class Article
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Dossier", inversedBy="articles", cascade={"persist","remove"})
+     */
+    private $dossier;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -39,12 +44,34 @@ class Article
 
     /**
      * @param mixed $name
-     * @return Article
      */
     public function setName($name)
     {
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDossier()
+    {
+        return $this->dossier;
+    }
+
+    /**
+     * @param mixed $dossier
+     */
+    public function setDossier($dossier)
+    {
+        $this->dossier = $dossier;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
